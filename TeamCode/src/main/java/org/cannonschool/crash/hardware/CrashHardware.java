@@ -1,7 +1,6 @@
 package org.cannonschool.crash.hardware;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 public class CrashHardware {
 
