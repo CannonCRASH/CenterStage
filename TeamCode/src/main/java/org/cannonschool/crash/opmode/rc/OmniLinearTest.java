@@ -81,17 +81,18 @@ public class OmniLinearTest extends LinearOpMode  {
             // Once the correct motors move in the correct direction re-comment this code.
 
 
-            leftFrontPower  = gamepad1.x ? 1.0 : 0.0;  // X gamepad
+            /*leftFrontPower  = gamepad1.x ? 1.0 : 0.0;  // X gamepad
             leftBackPower   = gamepad1.a ? 1.0 : 0.0;  // A gamepad
             rightFrontPower = gamepad1.y ? 1.0 : 0.0;  // Y gamepad
             rightBackPower  = gamepad1.b ? 1.0 : 0.0;  // B gamepad
 
+             */
 
             // Send calculated power to wheels
-            //frontLeft.setPower(leftFrontPower);
-            //frontRight.setPower(rightFrontPower);
-            //backLeft.setPower(leftBackPower);
-            //backRight.setPower(rightBackPower);
+            frontLeft.setPower(leftFrontPower);
+            frontRight.setPower(rightFrontPower);
+            backLeft.setPower(leftBackPower);
+            backRight.setPower(rightBackPower);
 
             // Show the elapsed game time and wheel power.
             telemetry.addData("Status", "Running " + runtime.toString());
