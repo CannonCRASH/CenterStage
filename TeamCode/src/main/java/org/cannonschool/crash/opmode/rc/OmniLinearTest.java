@@ -21,7 +21,7 @@ public class OmniLinearTest extends LinearOpMode  {
 
     @Override
     public void runOpMode() {
-        /*frontLeft = hardwareMap.get(DcMotor.class, CrashHardware.MOTOR_FRONT_LEFT.hardware_id);
+        frontLeft = hardwareMap.get(DcMotor.class, CrashHardware.MOTOR_FRONT_LEFT.hardware_id);
         frontRight = hardwareMap.get(DcMotor.class, CrashHardware.MOTOR_FRONT_RIGHT.hardware_id);
         backLeft = hardwareMap.get(DcMotor.class, CrashHardware.MOTOR_BACK_LEFT.hardware_id);
         backRight = hardwareMap.get(DcMotor.class, CrashHardware.MOTOR_BACK_RIGHT.hardware_id);
@@ -32,7 +32,7 @@ public class OmniLinearTest extends LinearOpMode  {
         backLeft.setDirection(CrashHardware.MOTOR_BACK_LEFT.forward_direction);
         backRight.setDirection(CrashHardware.MOTOR_BACK_RIGHT.forward_direction);
 
-         */
+
 
         // Wait for the game to start
         telemetry.addData("Status", "Ready");
@@ -80,12 +80,12 @@ public class OmniLinearTest extends LinearOpMode  {
             //      the setDirection() calls above.
             // Once the correct motors move in the correct direction re-comment this code.
 
-            /*
+
             leftFrontPower  = gamepad1.x ? 1.0 : 0.0;  // X gamepad
             leftBackPower   = gamepad1.a ? 1.0 : 0.0;  // A gamepad
             rightFrontPower = gamepad1.y ? 1.0 : 0.0;  // Y gamepad
             rightBackPower  = gamepad1.b ? 1.0 : 0.0;  // B gamepad
-            */
+
 
             // Send calculated power to wheels
             //frontLeft.setPower(leftFrontPower);
