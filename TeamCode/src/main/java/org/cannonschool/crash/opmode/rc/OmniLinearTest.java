@@ -1,4 +1,4 @@
-package org.cannonschool.crash.opmode.opmode.rc;
+package org.cannonschool.crash.opmode.rc;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
@@ -11,20 +11,15 @@ import org.cannonschool.crash.hardware.CrashHardware;
 
 @TeleOp(name = "[test] Omniwheel Linear", group = "tele/linear")
 public class OmniLinearTest extends LinearOpMode  {
-    private ElapsedTime runtime = new ElapsedTime();
-
-    // Motors
-    private DcMotor frontLeft = null;
-    private DcMotor frontRight = null;
-    private DcMotor backLeft = null;
-    private DcMotor backRight = null;
+    private final ElapsedTime runtime = new ElapsedTime();
 
     @Override
     public void runOpMode() {
-        frontLeft = hardwareMap.get(DcMotor.class, CrashHardware.MOTOR_FRONT_LEFT.hardware_id);
-        frontRight = hardwareMap.get(DcMotor.class, CrashHardware.MOTOR_FRONT_RIGHT.hardware_id);
-        backLeft = hardwareMap.get(DcMotor.class, CrashHardware.MOTOR_BACK_LEFT.hardware_id);
-        backRight = hardwareMap.get(DcMotor.class, CrashHardware.MOTOR_BACK_RIGHT.hardware_id);
+        // Motors
+        DcMotor frontLeft = hardwareMap.get(DcMotor.class, CrashHardware.MOTOR_FRONT_LEFT.hardware_id);
+        DcMotor frontRight = hardwareMap.get(DcMotor.class, CrashHardware.MOTOR_FRONT_RIGHT.hardware_id);
+        DcMotor backLeft = hardwareMap.get(DcMotor.class, CrashHardware.MOTOR_BACK_LEFT.hardware_id);
+        DcMotor backRight = hardwareMap.get(DcMotor.class, CrashHardware.MOTOR_BACK_RIGHT.hardware_id);
 
         // Change these constants in RobotHardware if motors are going backwards.
         frontLeft.setDirection(CrashHardware.MOTOR_FRONT_LEFT.forward_direction);
@@ -47,7 +42,7 @@ public class OmniLinearTest extends LinearOpMode  {
 
             // POV Mode uses left joystick to go forward & strafe, and right joystick to rotate.
             double axial   = -gamepad1.left_stick_y;  // Note: pushing stick forward gives negative value
-            double lateral =  gamepad1.left_stick_x;
+            double lateral = -gamepad1.left_stick_x;
             double yaw     =  gamepad1.right_stick_x;
 
             // Combine the joystick requests for each axis-motion to determine each wheel's power.
@@ -95,7 +90,7 @@ public class OmniLinearTest extends LinearOpMode  {
             backRight.setPower(rightBackPower);
 
             // Show the elapsed game time and wheel power.
-            telemetry.addData("Status", "Running " + runtime.toString());
+            telemetry.addData("Status", "Running " + runtime);
             telemetry.addData("Front", "%4.2f, %4.2f", leftFrontPower, rightFrontPower);
             telemetry.addData(" Back", "%4.2f, %4.2f", leftBackPower, rightBackPower);
             telemetry.update();
