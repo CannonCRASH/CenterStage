@@ -5,3 +5,5 @@ This repository contains the public controller for the 2023-2024 Cannon CRASH FT
 # Contributions
 
 We do not accept contributions from unknown users. Contact Mush for organization membership if you think you should have access to this repository. All members of @CannonCrash/crash_members have access to this repository.
+
+System.out.println("helloworld")
