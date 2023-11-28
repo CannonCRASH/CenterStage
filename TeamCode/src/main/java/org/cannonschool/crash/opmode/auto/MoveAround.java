@@ -1,5 +1,6 @@
-package org.cannonschool.crash.opmode.opmode.rc;
+package org.cannonschool.crash.opmode.auto;
 
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -9,8 +10,8 @@ import org.cannonschool.crash.hardware.CrashHardware;
 
 // Mostly pulled from org.firstinspires.ftc.robotcontroller.external.samples.BasicOmniOpMode_Linear
 
-@TeleOp(name = "[test] Omniwheel Linear", group = "tele/linear")
-public class OmniLinearTest extends LinearOpMode  {
+@Autonomous(name = "MoveAround", group = "auto/linear")
+public class MoveAround extends LinearOpMode  {
     private ElapsedTime runtime = new ElapsedTime();
 
     // Motors
@@ -20,7 +21,6 @@ public class OmniLinearTest extends LinearOpMode  {
     private DcMotor backRight = null;
 
     @Override
-    //sets up motors
     public void runOpMode() {
         frontLeft = hardwareMap.get(DcMotor.class, CrashHardware.MOTOR_FRONT_LEFT.hardware_id);
         frontRight = hardwareMap.get(DcMotor.class, CrashHardware.MOTOR_FRONT_RIGHT.hardware_id);
@@ -47,9 +47,11 @@ public class OmniLinearTest extends LinearOpMode  {
             double max;
 
             // POV Mode uses left joystick to go forward & strafe, and right joystick to rotate.
-            double axial   = -gamepad1.left_stick_y;  // Note: pushing stick forward gives negative value
-            double lateral =  -gamepad1.left_stick_x;
-            double yaw     =  gamepad1.right_stick_x;
+            double axial   = 0.2;  // Note: pushing stick forward gives negative value
+            double lateral =  0;
+            double yaw     =  0;
+
+
 
             // Combine the joystick requests for each axis-motion to determine each wheel's power.
             // Set up a variable for each drive wheel to save the power level for telemetry.
@@ -97,6 +99,10 @@ public class OmniLinearTest extends LinearOpMode  {
 
             // Show the elapsed game time and wheel power.
             telemetry.addData("Status", "Running " + runtime.toString());
+            if (runtime.seconds() > 2) {
+                telemetry.addData("Finished", "Yes");
+                terminateOpModeNow();
+            }
             telemetry.addData("Front", "%4.2f, %4.2f", leftFrontPower, rightFrontPower);
             telemetry.addData(" Back", "%4.2f, %4.2f", leftBackPower, rightBackPower);
             telemetry.update();
